@@ -24,6 +24,14 @@
   copy: src=ca.csr dest=/etc/pki/tls/private/
   register: copy_result3
 
+- name: copy files to httpd.conf.
+  copy: src=httpd.conf dest=/etc/httpd/conf/
+  register: copy_result4
+
+- name: copy files to httpd-vhosts.conf.
+  copy: src=httpd-vhosts.conf dest=/etc/httpd/conf.d/
+  register: copy_result5
+
 - name: check ssl.conf exists.
   stat:
     path: /etc/httpd/conf.d/ssl.conf
@@ -32,8 +40,8 @@
 - name: rename ssl.conf.
   shell: mv /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.bk
   when: ssl_conf_exists.stat.exists == True
-  register: copy_result4
+  register: copy_result6
 
 - name: reloads service.
   service: name=httpd state=reloaded
-  when: copy_result1|changed or copy_result2|changed or copy_result3|changed or copy_result4|changed
+  when: copy_result1|changed or copy_result2|changed or copy_result3|changed or copy_result4|changed or copy_result5|changed or copy_result6|changed
