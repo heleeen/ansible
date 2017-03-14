@@ -9,8 +9,8 @@
      - {role: git,     tags: [always]}
      - {role: vim,     tags: [vim]}
      - {role: openssl,  tags: [openssl]}
-     - {role: self-signed-certificate,  tags: [self-signed-certificate]}
      - {role: apache,  tags: [apache]}
+     - {role: self-signed-certificate,  tags: [self-signed-certificate]}
      - {role: php,     tags: [php]}
      - {role: mysql,  tags: [mysql]}
      - {role: composer,     tags: [composer]}
