@@ -1,0 +1,13 @@
+---
+
+- include_vars: ../vars/mysql.yml
+
+- name: installs mysql.
+  yum: name=mysql
+
+- name: installs mysql packages.
+  yum: name={{ item }}
+  with_items: "{{ mysql.pkgs }}"
+
+- name: starts mysqld.
+  service: name=mysqld state=started enabled=yes

@@ -1,0 +1,18 @@
+---
+
+- hosts: dev
+  become: yes
+  user: vagrant
+  gather_facts: no
+  roles:
+     - {role: common,  tags: [always]}
+     - {role: git,     tags: [always]}
+     - {role: vim,     tags: [vim]}
+     - {role: openssl,  tags: [openssl]}
+     - {role: self-signed-certificate,  tags: [self-signed-certificate]}
+     - {role: apache,  tags: [apache]}
+     - {role: php,     tags: [php]}
+     - {role: mysql,  tags: [mysql]}
+     - {role: composer,     tags: [composer]}
+    # - {role: mail, tags: [mail]}
+    # - {role: application,     tags: [application]}
